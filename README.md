@@ -114,7 +114,7 @@ See [Developing an edge service for devices](https://www-03preprod.ibm.com/suppo
 
 ## <a id=using-JSON-exporter></a> 4. Using the Edge Service with Deployment Policy
 
-![Policy Example ](docs/edge-monitoring-2.png)
+![Policy Example ](docs/ultra-mmsPolicy.png)
 
 The Horizon Policy mechanism offers an alternative to using deployment patterns. Policies provide much finer control over the deployment placement of edge services. Policies also provide a greater separation of concerns, allowing edge nodes owners, service code developers, and business owners to each independently articulate their own policies. There are three main types of Horizon Policies:
 
@@ -156,14 +156,14 @@ make publish-service-policy
 For example:
 
 ```bash
-hzn exchange service addpolicy -f policy/service.policy.json json.exporter_1.0.0_amd64
+hzn exchange service addpolicy -f policy/service.policy.json pynq-server-mms_1.0.0_arm64
 
 ```
 
-4. View the pubished service policy attached to the **json.exporter** edge service:
+4. View the pubished service policy attached to the **pynq-server** edge service:
 
 ```bash
-hzn exchange service listpolicy json.exporter_1.0.0_amd64
+hzn exchange service listpolicy jpynq-server-mms_1.0.0_arm64
 ```
 
 The output should look like:
