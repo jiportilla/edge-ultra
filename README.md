@@ -21,7 +21,6 @@ Based on
 
 [4. Using the JSON Exporter Service with Deployment Policy](#using-JSON-exporter)
 
-![Prometheus architecture ](docs/JSON-exporter.png)
 
 ## <a id=preconditions></a> 1. Preconditions for Using the Edge Service
 
