@@ -1,0 +1,72 @@
+# Copyright (c) Jupyter Development Team, step21
+# Distributed under the terms of the Modified BSD License.
+# https://github.com/jiwidi/jupyter-lab-docker-rpi
+# https://github.com/step21/raspi-jupyter-docker-stacks
+#
+ARG BASE_CONTAINER=step21/jupyter-base-notebook
+FROM $BASE_CONTAINER
+
+LABEL maintainer="step21 <step21@devtal.de>"
+
+USER root
+
+# Install all OS dependencies for fully functional notebook server
+RUN apt-get update
+RUN apt-get install -yq --no-install-recommends \
+     build-essential \
+     emacs \
+     git \
+     inkscape \
+     jed \
+     libsm6 \
+     libxext-dev \
+     libxrender1 \
+     lmodern \
+     netcat \
+     pandoc \
+     python-dev \
+     texlive-fonts-extra \
+     texlive-fonts-recommended \
+     texlive-generic-recommended \
+     texlive-latex-base \
+     texlive-latex-extra \
+     texlive-xetex \
+     tzdata \
+     unzip \
+     nano \
+     curl \
+     jq
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Configure jupyter
+#RUN jupyter nbextension enable --py widgetsnbextension
+RUN jupyter serverextension enable --py jupyterlab
+#RUN jupyter notebook --generate-config
+
+RUN mkdir notebooks
+
+#/home/jovyan/.jupyter/jupyter_notebook_config.py
+RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /home/jovyan/.jupyter/jupyter_notebook_config.py \
+        && sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '*'" /home/jovyan/.jupyter/jupyter_notebook_config.py \
+        && sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/home/jovyan'" /home/jovyan/.jupyter/jupyter_notebook_config.py \ 
+        && sed -i "/c.NotebookApp.password/c c.NotebookApp.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'" /home/jovyan/.jupyter/jupyter_notebook_config.py
+
+VOLUME /home/jovyan/notebooks
+
+COPY  1_jupyter_notebooks.ipynb /home/jovyan/notebooks/1_jupyter_notebooks.ipynb
+
+# Add Tini. Tini operates as a process subreaper for jupyter. This prevents
+# kernel crashes.
+ENTRYPOINT ["/usr/local/bin/tini", "--"]
+
+COPY *.sh /
+WORKDIR /
+RUN chmod +x /*.sh
+
+EXPOSE 8888
+#CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0"]
+
+CMD ["/start.sh"]
+
+# Switch back to jovyan to avoid accidental container runs as root
+#USER $NB_UID

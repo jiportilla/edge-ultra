@@ -1,0 +1,23 @@
+{
+  "objectID": "2_python_environment.ipynb",
+  "objectType": "notebook",
+  "destinationOrgID": "$HZN_ORG_ID",
+  "destinationPolicy": {
+    "properties": [],
+    "constraints": [
+        "GPU-type  == TPU"
+     ],
+    "services": [
+       {
+	 "orgID" : "$HZN_ORG_ID",
+         "arch": "$ARCH",
+         "serviceName" : "$SERVICE_NAME",
+         "version": "$SERVICE_VERSION"
+       }
+    ]
+  },
+  "expiration": "",
+  "version": "1.0.0",
+  "description": "jupyter server updates demo",
+  "activationTime": ""
+}

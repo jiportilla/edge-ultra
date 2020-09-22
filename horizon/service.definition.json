@@ -1,0 +1,26 @@
+{
+    "org": "$HZN_ORG_ID",
+    "label": "$SERVICE_NAME for $ARCH",
+    "description": "A super-simple pynq server demo with Horizon MMS updates",
+    "public": false,
+    "documentation": "https://github.com/jiportilla/img-MMS/blob/master/README.md",
+    "url": "$SERVICE_NAME",
+    "version": "$SERVICE_VERSION",
+    "arch": "$ARCH",
+    "sharable": "multiple",
+    "requiredServices": [],
+    "userInput": [],
+    "deployment": {
+        "services": {
+            "$SERVICE_NAME": {
+                "image": "${DOCKER_IMAGE_BASE}_$ARCH:$SERVICE_VERSION",
+		"ports": [
+                    {
+                        "HostPort": "8888:8888/tcp",
+                        "HostIP": "0.0.0.0"
+                    }
+                ]
+            }
+        }
+    }
+}

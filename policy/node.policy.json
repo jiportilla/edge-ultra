@@ -1,0 +1,17 @@
+{
+  "properties": [
+    {
+      "name": "sensor",
+      "value": "camera"
+    },
+    {
+      "name": "location",
+      "value": "backyard"
+    },
+    {
+      "name": "GPU-type",
+      "value": "TPU"
+    }
+  ],
+  "constraints": []
+}

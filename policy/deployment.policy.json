@@ -1,0 +1,28 @@
+{
+  "label": "Deployment policy for $SERVICE_NAME",
+  "description": "A super-simple pynq server demo with Horizon MMS updates",
+  "service": {
+    "name": "$SERVICE_NAME",
+    "org": "$HZN_ORG_ID",
+    "arch": "$ARCH",
+    "serviceVersions": [
+      {
+        "version": "$SERVICE_VERSION",
+        "priority":{}
+      }
+    ]
+  },
+  "properties": [],
+  "constraints": [
+        "location == backyard"
+  ],
+  "userInput": [
+    {
+      "serviceOrgid": "$HZN_ORG_ID",
+      "serviceUrl": "$SERVICE_NAME",
+      "serviceVersionRange": "[0.0.0,INFINITY)",
+      "inputs": [
+      ]
+    }
+  ]
+}
