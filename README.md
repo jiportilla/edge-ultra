@@ -397,6 +397,7 @@ sudo docker ps
 
 CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS                    NAMES
 721416db025f        iportilla/pynq-server_arm64   "/usr/local/bin/tini…"   32 seconds ago      Up 30 seconds       0.0.0.0:8888->8888/tcp   2cdd551318a3083639c28af5c413f494c8a4959f36209fe1f83c740c6545421f-pynq-server-mms```
+```
 
 3. See the Edge service output, navigate to IP_Address:8888
 
