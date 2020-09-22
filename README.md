@@ -19,7 +19,7 @@ Based on
 
 [3. Building and Publishing the Edge Service](#building)
 
-[4. Using the JSON Exporter Service with Deployment Policy](#using-JSON-exporter)
+[4. Using the Edge Service with Deployment Policy](#using-JSON-exporter)
 
 
 ## <a id=preconditions></a> 1. Preconditions for Using the Edge Service
@@ -63,7 +63,7 @@ hzn register
 
 ## <a id=configuring></a> 2. Configuring the Edge Service
 
-You should complete these steps before proceeding building the JSON Exporter service:
+You should complete these steps before proceeding building the Edge service:
 
 1. Clone this git repository:
 
@@ -147,7 +147,7 @@ export ARCH=$(hzn architecture)
 eval $(hzn util configconv -f horizon/hzn.json)
 ```
 
-3. Next, add or replace the service policy in the Horizon Exchange for this JSON Exporter Service:
+3. Next, add or replace the service policy in the Horizon Exchange for this Edge Service:
 
 ```bash
 make publish-service-policy
@@ -320,7 +320,7 @@ hzn exchange deployment listpolicy ppolicy-pynq-server-mms_1.0.0_arm64
 
 - The node registration step will be completed in this section:
 
-1. Below is the file provided in `policy/node.policy.json` with this JSON exporter service:
+1. Below is the file provided in `policy/node.policy.json` with this Edge service:
 
 ```json
 {
