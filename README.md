@@ -400,7 +400,8 @@ CONTAINER ID        IMAGE                         COMMAND                  CREAT
 
 3. See the Edge service output, navigate to IP_Address:8888
 
-``
+Navigate to notebooks directory.
+
 
 - **Note**: Use **jns** as temporary password.
 
